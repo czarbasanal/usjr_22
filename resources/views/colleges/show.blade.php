@@ -1,25 +1,22 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
-<div class="card">
-    <div class="card-header">
-        College Details
+<div class="container mx-auto mt-5">
+    <div class="flex justify-between items-center mb-4">
+        <h1 class="text-2xl font-bold mb-4">College Details</h1>
+        <a href="{{ url()->previous() }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+            Back
+        </a>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">{{ $college->collfullname }}</h5>
-        <p class="card-text">Departments:</p>
-        <ul>
+
+    <div class="bg-white shadow-md rounded-lg p-4">
+        <p class="mb-2"><strong>Name:</strong> {{ $college->collfullname }}</p>
+        <h2 class="text-xl font-semibold mt-4 mb-2">Departments</h2>
+        <ul class="list-disc pl-5">
             @foreach($college->departments as $department)
             <li>{{ $department->deptfullname }}</li>
             @endforeach
         </ul>
-        <p class="card-text">Programs:</p>
-        <ul>
-            @foreach($college->programs as $program)
-            <li>{{ $program->progfullname }}</li>
-            @endforeach
-        </ul>
-        <a href="{{ url('/show/colleges') }}" class="btn btn-primary">Back to list</a>
     </div>
 </div>
 @endsection

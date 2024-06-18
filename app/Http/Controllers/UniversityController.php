@@ -35,7 +35,7 @@ class UniversityController extends Controller
 
     public function showDepartments()
     {
-        $departments = Department::with('college')->get();
+        $departments = Department::with('college')->paginate(5);
         return view('departments.all', compact('departments'));
     }
 }
